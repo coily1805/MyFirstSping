@@ -77,8 +77,7 @@ public class MessageController {
      * shows the message form for saving or updating a message
      * 
      * @param model
-     * @param description
-     * @param date
+     * @param id
      * @return view message-form.jsp
      */
     @RequestMapping(value = "/message/update", method = RequestMethod.GET)
