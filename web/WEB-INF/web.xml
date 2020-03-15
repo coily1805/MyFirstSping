@@ -18,6 +18,7 @@
         <url-pattern>/message/*</url-pattern>
         <url-pattern>/message/new</url-pattern>
         <url-pattern>/message/all</url-pattern>
+        <url-pattern>/message/delete/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

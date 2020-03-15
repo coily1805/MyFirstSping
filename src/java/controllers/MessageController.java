@@ -72,20 +72,36 @@ public class MessageController {
         model.addAttribute("msg", msg);
         return ("message-form");
     }
-
+    
     /**
-     * saves a newly written message call with
-     * http://localhost:8081/MyFirstSping/message/save?description=some%20message&date=1/1/1
-     *
+     * shows the message form for saving or updating a message
+     * 
+     * @param model
+     * @param description
+     * @param date
+     * @return view message-form.jsp
+     */
+    @RequestMapping(value = "/message/update", method = RequestMethod.GET)
+    public String updateMessage(ModelMap model, @RequestParam("id") String id) {
+        // Message msg = messageService.findById(id);
+        model.addAttribute("title", "Save / Update");
+        model.addAttribute("button", "Save / Update a Message");
+//        model.addAttribute(msg);
+        return ("message-form");
+    }
+    
+    /**
+     * saves a newly written message
+     * 
      * @param model
      * @param description
      * @param date
      * @return view message-form.jsp
      */
     @RequestMapping(value = "/message/save", method = RequestMethod.POST)
-    public String saveMessage(ModelMap model, @RequestParam String description, @RequestParam String date) {
-        model.addAttribute("title", "Save");
-        model.addAttribute("button", "Save New Message");
+    public String saveMessage(ModelMap model, @RequestParam("description") String description, @RequestParam("date") String date) {
+        model.addAttribute("title", "Save / Update");
+        
         boolean result = false;
 //        Message msg = new Message(description, date);
 //        result = messageService.save(msg);
@@ -94,7 +110,7 @@ public class MessageController {
         } else {
             model.addAttribute("result", "Message has not been stored correctly to the database!");
         }
-        return ("message-form");
+        return ("message-save-update");
     }
 
     /**
@@ -107,7 +123,7 @@ public class MessageController {
      * @return view message-form.jsp
      */
     @RequestMapping(value = "/message/update", method = RequestMethod.POST)
-    public String updateMessage(ModelMap model, @RequestParam String id, @RequestParam String description, @RequestParam String date) {
+    public String updateMessage(ModelMap model, @RequestParam("id") String id, @RequestParam("description") String description, @RequestParam("date") String date) {
         model.addAttribute("title", "Update");
         model.addAttribute("button", "Update Message");
         boolean result = false;
