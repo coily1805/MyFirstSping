@@ -74,22 +74,6 @@ public class MessageController {
     }
     
     /**
-     * shows the message form for saving or updating a message
-     * 
-     * @param model
-     * @param id
-     * @return view message-form.jsp
-     */
-    @RequestMapping(value = "/message/update", method = RequestMethod.GET)
-    public String updateMessage(ModelMap model, @RequestParam("id") String id) {
-        // Message msg = messageService.findById(id);
-        model.addAttribute("title", "Save / Update");
-        model.addAttribute("button", "Save / Update a Message");
-//        model.addAttribute(msg);
-        return ("message-form");
-    }
-    
-    /**
      * saves a newly written message
      * 
      * @param model
@@ -111,7 +95,24 @@ public class MessageController {
         }
         return ("message-save-update");
     }
-
+    
+    
+    /**
+     * shows the message form for saving or updating a message
+     * 
+     * @param model
+     * @param id
+     * @return view message-form.jsp
+     */
+    @RequestMapping(value = "/message/update", method = RequestMethod.GET)
+    public String updateMessage(ModelMap model, @RequestParam("id") String id) {
+        // Message msg = messageService.findById(id);
+        model.addAttribute("title", "Save / Update");
+        model.addAttribute("button", "Save / Update a Message");
+//        model.addAttribute(msg);
+        return ("message-form");
+    }
+    
     /**
      * saves an updated message
      *
